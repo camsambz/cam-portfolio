@@ -179,7 +179,8 @@ a.shot-link:active .frame{transform:scale(.985)}
 
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 30px;transition:transform .22s var(--ease-out),border-color .22s var(--ease-out)}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 30px;transition:transform .22s var(--ease-out),border-color .22s var(--ease-out),box-shadow .22s var(--ease-out)}
+.svc.is-match{border-color:var(--lime);box-shadow:0 0 0 1px var(--lime)}
 .svc .n{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;color:var(--lime);margin:0 0 40px}
 .svc h3{font-size:1.28rem;margin-bottom:12px}
 .svc p{margin:0;color:var(--muted);font-size:.96rem}
@@ -212,6 +213,53 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
 @media (hover:hover) and (pointer:fine){.foot-row ul a:hover{color:var(--text)}}
 .fine{margin:18px 0 0;font-size:.8rem;max-width:80ch}
 
+/* where are you at */
+.needs-wrap{margin:0 0 clamp(28px,4vw,44px)}
+.needs-label{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.needs{display:flex;flex-wrap:wrap;gap:10px}
+.need,.chip-btn{display:inline-flex;align-items:center;min-height:48px;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:500 .95rem var(--body);cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),border-color .2s var(--ease-out),color .2s var(--ease-out)}
+.need:active,.chip-btn:active{transform:scale(.97)}
+.need[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+@media (hover:hover) and (pointer:fine){
+  .need:hover,.chip-btn:hover{border-color:rgba(200,255,61,.6);background:rgba(200,255,61,.07)}
+  .need[aria-pressed="true"]:hover{background:#d7ff6b}
+}
+.need-out{margin:18px 0 0;padding-left:16px;border-left:2px solid var(--lime);color:var(--muted);max-width:68ch;min-height:3.4em}
+
+/* chatbot demo */
+.chat-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center}
+.chat-grid .head{margin:0}
+.chat{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);overflow:hidden;box-shadow:0 40px 80px -50px rgba(200,255,61,.3)}
+.chat-head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:var(--muted)}
+.chat-head i{width:9px;height:9px;border-radius:50%;background:var(--lime);display:block;flex:none}
+.chat-log{display:flex;flex-direction:column;gap:10px;padding:18px;height:300px;overflow-y:auto}
+.msg{margin:0;max-width:88%;padding:11px 15px;border-radius:16px;font-size:.95rem;line-height:1.5}
+.msg.bot{align-self:flex-start;background:#171b29;border-bottom-left-radius:5px}
+.msg.me{align-self:flex-end;background:var(--lime);color:var(--lime-ink);border-bottom-right-radius:5px;font-weight:500}
+.chat-chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px 18px;border-top:1px solid var(--line)}
+.chip-btn{min-height:44px;padding:8px 16px;font-size:.88rem}
+.chat-foot{margin:0;padding:0 18px 16px;font-size:.82rem;color:var(--muted)}
+.chat-foot a{color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(200,255,61,.4)}
+
+/* one person vs a chain of hand-offs */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,32px)}
+.vs-card{border:1px dashed rgba(255,255,255,.22);border-radius:var(--r);padding:clamp(26px,3.4vw,44px)}
+.vs-card.is-me{border:1px solid rgba(200,255,61,.55);background:linear-gradient(180deg,rgba(200,255,61,.09),transparent 70%),var(--panel)}
+.vs-card .tag{margin-bottom:18px}
+.vs-card p:last-child{margin:0;color:var(--muted)}
+.chain{display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center;margin:0 0 26px}
+.chain li{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;padding:9px 14px;border:1px solid var(--line);border-radius:999px;color:var(--text)}
+.chain li:not(:last-child)::after{content:"\2192";margin-left:10px;color:var(--muted)}
+.chain li.me{background:var(--lime);border-color:var(--lime);color:var(--lime-ink);font-weight:500;font-size:1rem;padding:12px 22px}
+#solo .fine{margin-top:22px;color:var(--muted)}
+.chain li.me::after{color:var(--lime-ink)}
+
+/* footer motion control */
+.foot-btn{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font:500 .85rem var(--body);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .16s var(--ease-out),color .16s var(--ease-out),border-color .16s var(--ease-out)}
+.foot-btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.foot-btn:hover{color:var(--text);border-color:rgba(255,255,255,.3)}}
+[data-motion="off"] *{transition-duration:.01ms!important}
+
 @media (max-width:1040px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
@@ -222,6 +270,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   .project,.project:nth-child(even){grid-template-columns:1fr;gap:28px}
   .project .shot,.project .info,.project:nth-child(even) .shot,.project:nth-child(even) .info{grid-column:1;order:0}
   .xp-grid{grid-template-columns:1fr}
+  .chat-grid,.vs{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .svc-grid,.steps{grid-template-columns:1fr}
@@ -232,7 +281,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   .stats{gap:22px 34px}
 }
 @media (prefers-reduced-motion:reduce){
-  .frame,.svc,.btn{transition-duration:.01ms}
+  .frame,.svc,.btn,.need,.chip-btn,.foot-btn{transition-duration:.01ms}
 }
 </style>
 </head>
@@ -287,7 +336,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   <section class="block" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="head" data-reveal>
-        <p class="eyebrow">Selected work</p>
+        <p class="eyebrow">01 / Selected work</p>
         <h2 id="work-title">Three builds, three very different brands.</h2>
         <p class="lede">An AI education platform, a short-form video studio for medical practices, and a biotech concept redesign. Each one live, each one built to be fast, searchable and easy to use on a phone.</p>
       </div>
@@ -373,7 +422,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   <section class="block xp" id="experience" aria-labelledby="xp-title">
     <div class="wrap">
       <div class="head" data-reveal>
-        <p class="eyebrow">Experience</p>
+        <p class="eyebrow">02 / Experience</p>
         <h2 id="xp-title">Two teams, one thread: turn marketing into systems.</h2>
         <p class="lede">Both roles came down to the same job. Take work that used to be manual, and make it run on its own.</p>
       </div>
@@ -405,27 +454,37 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   <section class="block" id="services" aria-labelledby="svc-title">
     <div class="wrap">
       <div class="head" data-reveal>
-        <p class="eyebrow">Work with me</p>
+        <p class="eyebrow">03 / Work with me</p>
         <h2 id="svc-title">A site, then someone who keeps it running.</h2>
         <p class="lede">Most sites fall apart after launch. I build them well, then look after them every month so they stay fast, secure and current.</p>
       </div>
+      <div class="needs-wrap" id="needs" hidden data-reveal>
+        <p class="needs-label" id="needs-label">Where are you at?</p>
+        <div class="needs" role="group" aria-labelledby="needs-label">
+          <button class="need" type="button" data-need="new" aria-pressed="false">I need a new site</button>
+          <button class="need" type="button" data-need="old" aria-pressed="false">My site is old or slow</button>
+          <button class="need" type="button" data-need="leads" aria-pressed="false">I'm not getting leads</button>
+          <button class="need" type="button" data-need="video" aria-pressed="false">I need video content</button>
+        </div>
+        <p class="need-out" id="needOut" aria-live="polite">Pick the one that sounds most like you and I'll point you to where to start.</p>
+      </div>
       <div class="svc-grid">
-        <div class="svc" data-reveal>
+        <div class="svc" data-svc="build" data-reveal>
           <p class="n">01</p>
           <h3>Website design &amp; build</h3>
           <p>Fast, search-ready sites built mobile-first, with real motion and a private preview link before anything goes live.</p>
         </div>
-        <div class="svc" data-reveal>
+        <div class="svc" data-svc="care" data-reveal>
           <p class="n">02</p>
           <h3>Care plans</h3>
           <p>Monthly hosting, security, backups, updates and content edits, so your site stays online and up to date without you thinking about it.</p>
         </div>
-        <div class="svc" data-reveal>
+        <div class="svc" data-svc="bot" data-reveal>
           <p class="n">03</p>
           <h3>AI chatbot &amp; lead capture</h3>
           <p>A chatbot trained on your business that answers questions, captures leads and follows up around the clock.</p>
         </div>
-        <div class="svc" data-reveal>
+        <div class="svc" data-svc="video" data-reveal>
           <p class="n">04</p>
           <h3>Short-form video</h3>
           <p>Reels, TikToks and Shorts that look like your brand, planned from storyboard to caption.</p>
@@ -435,10 +494,58 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
     </div>
   </section>
 
+  <section class="block xp" id="chat" aria-labelledby="chat-title">
+    <div class="wrap chat-grid">
+      <div class="head" data-reveal>
+        <p class="eyebrow">04 / Try a chatbot</p>
+        <h2 id="chat-title">A chatbot that works while you don't.</h2>
+        <p class="lede">A chatbot on your site answers visitors instantly, around the clock, and hands off to you when it should. Try the demo and see how it feels.</p>
+        <ul class="did" aria-label="What a site chatbot does">
+          <li>Answers common questions in your words</li>
+          <li>Captures leads and passes them to you</li>
+          <li>Trained on your business, not generic</li>
+        </ul>
+      </div>
+      <div class="chat" id="chatDemo" hidden data-reveal>
+        <div class="chat-head"><i aria-hidden="true"></i><span>Site assistant · demo</span></div>
+        <div class="chat-log" role="log" aria-label="Chat demo conversation"></div>
+        <div class="chat-chips" role="group" aria-label="Suggested questions"></div>
+        <p class="chat-foot">Scripted demo. A real one is trained on your own content. Want one?  <a href="https://camsambz.github.io/cam-baker-hero/contact.html">Start a project</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="solo" aria-labelledby="solo-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">05 / Why work with me</p>
+        <h2 id="solo-title">One person. Zero hand-offs.</h2>
+        <p class="lede">Bigger teams pass your project down a line. Every pass is a chance for details to get lost. With me, the person you talk to is the person who builds it.</p>
+      </div>
+      <div class="vs">
+        <div class="vs-card" data-reveal>
+          <p class="tag">The usual agency way</p>
+          <ul class="chain" aria-label="A typical agency hand-off chain">
+            <li>Account manager</li><li>Designer</li><li>Developer</li><li>QA</li><li>You</li>
+          </ul>
+          <p>Each arrow is a hand-off, and each hand-off is a place for your brief to get lost in translation.</p>
+        </div>
+        <div class="vs-card is-me" data-reveal>
+          <p class="tag">Working with me</p>
+          <ul class="chain" aria-label="Working with Cam">
+            <li class="me">Cam</li><li>You</li>
+          </ul>
+          <p>You talk to the person who designs, builds and maintains your site. No hand-offs, no game of telephone.</p>
+        </div>
+      </div>
+      <p class="fine">Team structures vary. The agency chain shows the common shape of a larger team, not any one company.</p>
+    </div>
+  </section>
+
   <section class="block xp" id="process" aria-labelledby="proc-title">
     <div class="wrap">
       <div class="head" data-reveal>
-        <p class="eyebrow">How it works</p>
+        <p class="eyebrow">06 / How it works</p>
         <h2 id="proc-title">From first call to live site in four steps.</h2>
       </div>
       <div class="steps">
@@ -469,7 +576,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
   <section class="cta" aria-labelledby="cta-title">
     <div class="wrap">
       <h2 id="cta-title" data-reveal>Got a site that needs to work harder?</h2>
-      <p class="lede" data-reveal>Tell me about your business. I'll come back with a plan and a private draft.</p>
+      <p class="lede" data-reveal>Tell me about your business. I'll come back with a plan and a private draft, and if I'm not the right fit, I'll say so.</p>
       <div class="hero-cta" data-reveal>
         <a class="btn btn-primary" href="https://camsambz.github.io/cam-baker-hero/contact.html">Start a project</a>
         <a class="btn btn-ghost" href="https://camsambz.github.io/cam-baker-hero/">Watch my video work</a>
@@ -490,6 +597,7 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
         <li><a href="https://github.com/camsambz">GitHub</a></li>
         <li><a href="https://camsambz.github.io/cam-baker-hero/">Video portfolio</a></li>
       </ul>
+      <button id="motionToggle" class="foot-btn" type="button" hidden>Pause animations</button>
     </div>
     <p class="fine">Doctor Multimedia, The Academy.AI and Calidi Biotherapeutics are named to describe work and are the property of their owners. The Calidi page is an unofficial concept and is not affiliated with Calidi.</p>
   </div>
@@ -501,87 +609,206 @@ footer.foot{padding-block:44px 52px;border-top:1px solid var(--line);color:var(-
 <script defer src="lib/gsap-3.15.1/SplitText.min.js"></script>
 <script defer src="lib/funmode-1.0/funmode.js"></script>
 <script>
-/* Motion layer: progressive enhancement only. The page is complete without it. */
-window.addEventListener("load", function () {
+(function () {
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var KEY = "cam-portfolio-motion";
+  var paused = false;
+  try { paused = localStorage.getItem(KEY) === "off"; } catch (e) {}
+  var still = reduce || paused;
+  var teardown = [];
+  if (paused) document.documentElement.setAttribute("data-motion", "off");
 
-  /* Fun mode: opt-in, mouse screens only, never when motion is reduced */
-  if (!reduce && window.FunMode) {
-    FunMode.init({ toggle: "#funToggle", theme: {
-      accent: "#c8ff3d", accent2: "#4fe3ff", ink: "#f3f1ea", panel: "rgba(7,8,13,.92)",
-      font: "'JetBrains Mono', ui-monospace, monospace",
-      title: "Squash the bugs",
-      storageKey: "cam-portfolio-funmode-hi",
-      enemies: [
-        { label: "BUG", points: 10, hp: 1, scale: 4, sprite: [
-          "#.........#", ".#.#####.#.", "..#######..", "###.###.###", "..#######..", ".#.#####.#.", "#...###...#" ] },
-        { label: "404", points: 15, hp: 2, scale: 4, sprite: [
-          "#.#.###.#.#", "#.#.#.#.#.#", "###.#.#.###", "..#.#.#...#", "..#.###...#" ] },
-        { label: "SPAM", points: 5, hp: 1, scale: 4, sprite: [
-          "###########", "##.#####.##", "#.##...##.#", "#...###...#", "###########" ] }
-      ],
-      boss: { label: "BROKEN LINK", points: 80, hp: 6, scale: 6 }
-    }});
+  function pauseMotion() {
+    still = true;
+    document.documentElement.setAttribute("data-motion", "off");
+    if (window.FunMode && FunMode.isOn()) FunMode.stop();
+    teardown.forEach(function (fn) { try { fn(); } catch (e) {} });
+    teardown = [];
   }
 
-  if (reduce || !window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  /* ---------- Interactive pieces: they work with or without motion ---------- */
 
-  /* 1. Smooth scroll, driven by GSAP's ticker so ScrollTrigger stays in sync */
-  var lenis = window.Lenis ? new Lenis({ syncTouch: false, anchors: { offset: -84 } }) : null;
-  if (lenis) {
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-    gsap.ticker.lagSmoothing(0);
+  /* "Where are you at?" selector points a visitor to the right service */
+  var needs = document.getElementById("needs");
+  if (needs) {
+    var out = document.getElementById("needOut");
+    var idle = out.textContent;
+    var plans = {
+      "new": { svc: ["build"], text: "Start with Website design & build. I make a full private draft first, so you see real pages before anything goes live." },
+      "old": { svc: ["build", "care"], text: "A rebuild plus a Care plan fits best: a faster, current site now, then monthly upkeep so it stays that way." },
+      "leads": { svc: ["bot"], text: "The AI chatbot & lead capture is the place to start. It answers questions and sends the leads to you around the clock." },
+      "video": { svc: ["video"], text: "Short-form video is the fit: Reels, TikToks and Shorts that look like your brand, planned from storyboard to caption." }
+    };
+    var needBtns = [].slice.call(needs.querySelectorAll(".need"));
+    var svcCards = [].slice.call(document.querySelectorAll(".svc[data-svc]"));
+    var showNeed = function (key) {
+      var plan = key ? plans[key] : null;
+      needBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-need") === key)); });
+      out.textContent = plan ? plan.text : idle;
+      svcCards.forEach(function (c) { c.classList.toggle("is-match", !!plan && plan.svc.indexOf(c.getAttribute("data-svc")) > -1); });
+    };
+    needBtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        showNeed(b.getAttribute("aria-pressed") === "true" ? null : b.getAttribute("data-need"));
+      });
+    });
+    needs.hidden = false;
   }
 
-  /* 2. Scroll reveals: only elements below the fold, subtle rise + fade */
-  gsap.utils.toArray("[data-reveal]").forEach(function (el) {
-    if (el.getBoundingClientRect().top < innerHeight * 0.9) return;
-    gsap.from(el, { autoAlpha: 0, y: 22, duration: 0.7, ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 90%", once: true } });
-  });
-
-  /* 3. One headline moment: words rise out of a mask */
-  var h = document.querySelector("[data-split]");
-  if (h && window.SplitText) {
-    var split = SplitText.create(h, { type: "words", mask: "words", aria: "auto" });
-    gsap.from(split.words, { yPercent: 110, duration: 0.8, stagger: 0.06, ease: "power3.out" });
+  /* Scripted chatbot demo: no backend, no data leaves the page */
+  var chat = document.getElementById("chatDemo");
+  if (chat) {
+    var log = chat.querySelector(".chat-log");
+    var chips = chat.querySelector(".chat-chips");
+    var script = [
+      ["What do you build?", "Fast, search-ready websites for doctors, founders and education brands. Everything is built mobile-first and previewed privately before launch."],
+      ["How does the care plan work?", "Hosting, security, backups, updates and content edits are handled every month, so the site stays fast and current without you thinking about it."],
+      ["What can a chatbot do for me?", "It answers common questions in your words, captures lead details and passes them to you, day or night."],
+      ["How does a project start?", "With a short brief about your business and customers. Then you get a private draft to review, so you see real pages before anything goes live."],
+      ["Can I talk to a person?", "Yes. Use the Start a project button and your message goes to Cam."]
+    ];
+    var say = function (cls, text) {
+      var p = document.createElement("p");
+      p.className = "msg " + cls;
+      p.textContent = text;
+      log.appendChild(p);
+      log.scrollTop = log.scrollHeight;
+      return p;
+    };
+    var busy = false;
+    script.forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip-btn";
+      b.textContent = pair[0];
+      b.addEventListener("click", function () {
+        if (busy) return;
+        busy = true;
+        say("me", pair[0]);
+        var dots = still ? null : say("bot", "…");
+        if (dots) dots.setAttribute("aria-hidden", "true");
+        setTimeout(function () {
+          if (dots) dots.remove();
+          say("bot", pair[1]);
+          busy = false;
+        }, dots ? 520 : 0);
+      });
+      chips.appendChild(b);
+    });
+    say("bot", "Hi! I'm a demo of the chatbot Cam builds for client sites. Tap a question to see how I answer.");
+    chat.hidden = false;
   }
 
-  /* 4. Count-ups, only to the real numbers already in the HTML */
-  gsap.utils.toArray("[data-count]").forEach(function (el) {
-    var end = +el.getAttribute("data-count"), o = { v: 0 };
-    function play() {
-      gsap.to(o, { v: end, duration: 1.2, ease: "power2.out",
-        onUpdate: function () { el.textContent = Math.round(o.v); },
-        onComplete: function () { el.textContent = end; } });
+  /* Footer control: pause every animation on the page */
+  var mt = document.getElementById("motionToggle");
+  var setLabel = function () { if (mt) mt.textContent = paused ? "Resume animations" : "Pause animations"; };
+  if (mt && !reduce) {
+    setLabel();
+    mt.hidden = false;
+    mt.addEventListener("click", function () {
+      paused = !paused;
+      try { paused ? localStorage.setItem(KEY, "off") : localStorage.removeItem(KEY); } catch (e) {}
+      setLabel();
+      if (paused) { pauseMotion(); }
+      else { location.reload(); } /* simplest clean restart of smooth scroll, reveals and the hero effect */
+    });
+  }
+
+  /* ---------- Motion layer: progressive enhancement only. The page is complete without it. ---------- */
+  window.addEventListener("load", function () {
+
+    /* Fun mode: opt-in, mouse screens only, never when motion is reduced or paused */
+    if (!still && window.FunMode) {
+      FunMode.init({ toggle: "#funToggle", theme: {
+        accent: "#c8ff3d", accent2: "#4fe3ff", ink: "#f3f1ea", panel: "rgba(7,8,13,.92)",
+        font: "'JetBrains Mono', ui-monospace, monospace",
+        title: "Squash the bugs",
+        storageKey: "cam-portfolio-funmode-hi",
+        enemies: [
+          { label: "BUG", points: 10, hp: 1, scale: 4, sprite: [
+            "#.........#", ".#.#####.#.", "..#######..", "###.###.###", "..#######..", ".#.#####.#.", "#...###...#" ] },
+          { label: "404", points: 15, hp: 2, scale: 4, sprite: [
+            "#.#.###.#.#", "#.#.#.#.#.#", "###.#.#.###", "..#.#.#...#", "..#.###...#" ] },
+          { label: "SPAM", points: 5, hp: 1, scale: 4, sprite: [
+            "###########", "##.#####.##", "#.##...##.#", "#...###...#", "###########" ] }
+        ],
+        boss: { label: "BROKEN LINK", points: 80, hp: 6, scale: 6 }
+      }});
     }
-    el.textContent = "0";
-    if (el.getBoundingClientRect().top < innerHeight * 0.92) { play(); }
-    else { ScrollTrigger.create({ trigger: el, start: "top 92%", once: true, onEnter: play }); }
-  });
 
-  /* 5. Desktop-only Vanta NET behind the hero; phones keep the static gradient */
-  var bg = document.querySelector("[data-vanta]");
-  var big = matchMedia("(min-width: 900px) and (hover: hover)");
-  var fx = null;
-  function loadScript(src) { return new Promise(function (ok, no) { var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
-  function startVanta() {
-    if (!bg || fx || !big.matches) return;
-    loadScript("lib/three-0.134.0/three.min.js")
-      .then(function () { return loadScript("lib/vanta-0.5.24/vanta.net.min.js"); })
-      .then(function () {
-        if (fx || !big.matches) return;
-        fx = VANTA.NET({ el: bg, THREE: window.THREE, mouseControls: true, touchControls: false, gyroControls: false,
-          color: 0x266873, backgroundColor: 0x07080d, points: 8, maxDistance: 21, spacing: 20, showDots: true });
-      })
-      .catch(function () {});
-  }
-  function stopVanta() { if (fx) { fx.destroy(); fx = null; } }
-  startVanta();
-  big.addEventListener("change", function () { big.matches ? startVanta() : stopVanta(); });
-});
+    if (still || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* 1. Smooth scroll, driven by GSAP's ticker so ScrollTrigger stays in sync */
+    var lenis = window.Lenis ? new Lenis({ syncTouch: false, anchors: { offset: -84 } }) : null;
+    var tick = function (t) { lenis.raf(t * 1000); };
+    if (lenis) {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    /* 2. Scroll reveals: only elements below the fold, subtle rise + fade */
+    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+      if (el.getBoundingClientRect().top < innerHeight * 0.9) return;
+      gsap.from(el, { autoAlpha: 0, y: 22, duration: 0.7, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 90%", once: true } });
+    });
+
+    /* 3. One headline moment: words rise out of a mask */
+    var split = null;
+    var h = document.querySelector("[data-split]");
+    if (h && window.SplitText) {
+      split = SplitText.create(h, { type: "words", mask: "words", aria: "auto" });
+      gsap.from(split.words, { yPercent: 110, duration: 0.8, stagger: 0.06, ease: "power3.out" });
+    }
+
+    /* 4. Count-ups, only to the real numbers already in the HTML */
+    gsap.utils.toArray("[data-count]").forEach(function (el) {
+      var end = +el.getAttribute("data-count"), o = { v: 0 };
+      function play() {
+        gsap.to(o, { v: end, duration: 1.2, ease: "power2.out",
+          onUpdate: function () { el.textContent = Math.round(o.v); },
+          onComplete: function () { el.textContent = end; } });
+      }
+      el.textContent = "0";
+      if (el.getBoundingClientRect().top < innerHeight * 0.92) { play(); }
+      else { ScrollTrigger.create({ trigger: el, start: "top 92%", once: true, onEnter: play }); }
+    });
+
+    /* 5. Desktop-only Vanta NET behind the hero; phones keep the static gradient */
+    var bg = document.querySelector("[data-vanta]");
+    var big = matchMedia("(min-width: 900px) and (hover: hover)");
+    var fx = null;
+    function loadScript(src) { return new Promise(function (ok, no) { var s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
+    function startVanta() {
+      if (!bg || fx || still || !big.matches) return;
+      loadScript("lib/three-0.134.0/three.min.js")
+        .then(function () { return loadScript("lib/vanta-0.5.24/vanta.net.min.js"); })
+        .then(function () {
+          if (fx || still || !big.matches) return;
+          fx = VANTA.NET({ el: bg, THREE: window.THREE, mouseControls: true, touchControls: false, gyroControls: false,
+            color: 0x266873, backgroundColor: 0x07080d, points: 8, maxDistance: 21, spacing: 20, showDots: true });
+        })
+        .catch(function () {});
+    }
+    function stopVanta() { if (fx) { fx.destroy(); fx = null; } }
+    startVanta();
+    big.addEventListener("change", function () { big.matches ? startVanta() : stopVanta(); });
+
+    /* Pause: finish everything in place (nothing stays hidden or half-counted), then stop the engines */
+    teardown.push(function () {
+      var tweens = gsap.globalTimeline.getChildren(true, true, false);
+      ScrollTrigger.getAll().forEach(function (st) { st.kill(false, true); });
+      tweens.forEach(function (t) { t.progress(1, false); t.kill(); });
+      gsap.set("[data-reveal]", { clearProps: "opacity,visibility,transform" });
+      if (split) gsap.set(split.words, { clearProps: "transform" });
+      document.querySelectorAll("[data-count]").forEach(function (el) { el.textContent = el.getAttribute("data-count"); });
+      stopVanta();
+      if (lenis) { gsap.ticker.remove(tick); lenis.destroy(); }
+    });
+  });
+})();
 </script>
 </body>
 </html>
